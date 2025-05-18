@@ -13,24 +13,30 @@ This project is a demonstration of building a Node.js REST API using Express, My
 
 *config/*
 This folder contains configuration settings for the application.
+
 •	db.config.js
 Configures the connection settings for the MySQL database and sets Sequelize parameters like host, username, password, and database name.
+
 •	auth.config.js
 Stores the secret key used to sign and verify JWT tokens. Critical for ensuring secure token-based authentication.
 
 *controllers/*
 Handles the core business logic and acts as a middle layer between routes and models.
+
 •	auth.controller.js
 Manages user authentication actions such as sign-up and sign-in. Handles password encryption, user creation, and token generation.
+
 •	user.controller.js
 Controls access to different types of content depending on user roles. Returns responses for public, user, moderator, and admin endpoints.
 
 *middlewares/*
 Houses middleware functions that process requests before they reach route handlers.
+
 •	authJwt.js
 Middleware that:
 o	Verifies the presence and validity of JWT tokens in requests.
 o	Checks if the user has the required role to access certain resources.
+
 •	verifySignUp.js
 Middleware used during the sign-up process to:
 o	Check if the provided username or email already exists in the database.
@@ -38,19 +44,24 @@ o	Prevent duplicate account creation.
 
 *models/*
 Defines Sequelize models and database associations.
+
 •	index.js
 Initializes Sequelize, imports models, and defines associations (e.g., a user can have multiple roles).
+
 •	role.model.js
 Defines the structure of the Role model, used for implementing role-based access control.
+
 •	user.model.js
 Defines the User model, including properties like username, email, password, and roles.
 
 *routes/*
 Defines application routes and maps them to corresponding controller methods.
+
 •	auth.routes.js
 Contains routes related to user authentication:
 o	POST /api/auth/signup
 o	POST /api/auth/signin
+
 •	user.routes.js
 Contains routes for fetching different types of content:
 o	Public (GET /api/test/all)
